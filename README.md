@@ -16,3 +16,10 @@
 4. Run terraform init
 5. Run terraform plan
 6. Run terrafom apply --auto-approve
+
+#### Terraform variables
+| Name | Description | Default | Required |
+| -----|--------------|-----------|------------------------ |
+| Region | Region for GKE Cluster | us-central1 | Yes |
+| Project | ID of the project where infra will be deployed | project_id | Yes |
+| Cluster Name | Name of the GKE cluster | flask-app | Yes |
