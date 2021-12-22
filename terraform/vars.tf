@@ -5,7 +5,7 @@ variable "region" {
 
 variable "project" {
   description = "Please enter gcp project id for deployment"
-  default     = "qp-cloud-coe-tfa-1-2021-02"
+  default     = "project_id"
 }
 
 variable "cluster_name" {
