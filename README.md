@@ -1,19 +1,26 @@
 # flask-gke
 #### This is automated deployment of flask application on Google Kubernetes Engine. GKE cluster is created with Terraform along with Cloud Build Trigger. Cloud Build is used for CICD deployments. 
 
+#### Pre-reqs
+1. GCP Project with billing enabled
+2. GCP Cloud Source Repository for version control
+3. Enable below APIs of from GCP console.
+   - container.googleapis.com
+   - cloudresourcemanager.googleapis.com
+   - compute.googleapis.com
+   - storage-component.googleapis.com
+   - iam.googleapis.com
+   - iamcredentials.googleapis.com
+   - cloudbuild.googleapis.com
+5. Terraform installed on the local machine
+6. Cloud Build Setup
+7. Service account with permissions to deploy GKE cluster, Create service account, add permissions to service account and create cloud build trigger.
+
 #### There are 4 modules in terraform
 1. Cloud Build
 2. GKE
 3. IAM - service account for GKE 
 4. VPC - This include VPC, Subnet and Firewall
-
-#### Pre-reqs
-1. GCP Project with billing enabled
-2. GCP Cloud Source Repository for version control
-3. Enable APIs of GKE, Cloud Build, Cloud Source Repository, Compute Engine service.
-4. Terraform installed on the local machine
-5. Cloud Build Setup
-6. Service account with permissions to deploy GKE cluster, Create service account, add permissions to service account and create cloud build trigger.
 
 #### Steps for deployment
 1. Clone the repository with git clone https://github.com/oneaniket/flask-gke.git
