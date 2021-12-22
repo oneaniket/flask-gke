@@ -21,6 +21,7 @@
 2. GKE
 3. IAM - service account for GKE 
 4. VPC - This include VPC, Subnet and Firewall
+> Note : Terraform is configured with local backend. We can configure cloud storage as remote backend when working with team.
 
 #### Steps for deployment
 1. Clone the repository with git clone https://github.com/oneaniket/flask-gke.git
