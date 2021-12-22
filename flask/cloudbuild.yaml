@@ -1,0 +1,30 @@
+steps:
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build','-t', 'flask:$BUILD_ID', '.']
+
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['tag','flask:$BUILD_ID', 'gcr.io/${_PROJECT_ID}/flask:$BUILD_ID']
+
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push','gcr.io/${_PROJECT_ID}/flask:$BUILD_ID']
+
+- name: 'gcr.io/cloud-builders/gcloud'
+  entrypoint: "bash"
+  args:
+      - "-c"
+      - |
+        sed -i -e 's/latest/$BUILD_ID/g' ./deployment.yaml
+        gcloud container clusters get-credentials ${_CLUSTER_NAME} --region ${_COMPUTE_REGION} --project ${_PROJECT_ID}
+        kubectl apply -f ./deployment.yaml
+        kubectl apply -f ./service.yaml
+    # args: ['apply', '-k', './kubernetes/overlays/random-es/']
+  env:
+    - CLOUDSDK_COMPUTE_REGION=${_COMPUTE_REGION}
+    - CLOUDSDK_CONTAINER_CLUSTER=${_CLUSTER_NAME}
+    - GCLOUD_PROJECT=${_PROJECT_ID}
+
+
+substitutions:
+  _PROJECT_ID:     "qp-cloud-coe-tfa-1-2021-02" #default value
+  _CLUSTER_NAME:   "flask-app"
+  _COMPUTE_REGION: "us-central1"
