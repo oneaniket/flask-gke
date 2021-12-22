@@ -1,11 +1,9 @@
 provider "google" {
-  # credentials = file("${var.creds}")
   project = var.project
   region  = var.region
 }
 
 provider "google-beta" {
-  # credentials = file("${var.creds}")
   project = var.project
   region  = var.region
 }
