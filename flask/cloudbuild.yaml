@@ -17,7 +17,6 @@ steps:
         gcloud container clusters get-credentials ${_CLUSTER_NAME} --region ${_COMPUTE_REGION} --project ${_PROJECT_ID}
         kubectl apply -f ./deployment.yaml
         kubectl apply -f ./service.yaml
-    # args: ['apply', '-k', './kubernetes/overlays/random-es/']
   env:
     - CLOUDSDK_COMPUTE_REGION=${_COMPUTE_REGION}
     - CLOUDSDK_CONTAINER_CLUSTER=${_CLUSTER_NAME}
