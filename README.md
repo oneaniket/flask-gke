@@ -1,6 +1,12 @@
 # flask-gke
 #### This is automated deployment of flask application on Google Kubernetes Engine. GKE cluster is created with Terraform along with Cloud Build Trigger. Cloud Build is used for CICD deployments. 
 
+#### There are 4 modules in terraform
+1. Cloud Build
+2. GKE
+3. IAM - service account for GKE 
+4. VPC - This include VPC, Subnet and Firewall
+
 #### Pre-reqs
 1. GCP Project with billing enabled
 2. GCP Cloud Source Repository for version control
